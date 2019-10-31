@@ -1,10 +1,12 @@
 import React from 'react'
 
-const Artillery = () => {
+const Artillery: React.FC = () => {
 
   const [range, rangeChange] = React.useState(100)
 
   const handleChange = ({ target }: React.ChangeEvent<HTMLInputElement>) => rangeChange(Number(target.value))
+
+  const elevation = () => Math.round(-0.2371 * range + 1001.5)
 
   return (
     <div>
@@ -12,7 +14,7 @@ const Artillery = () => {
         Range:
         <input onChange={handleChange} value={range} />
       </label>
-      <p>Elevation: {-0.2371 * range + 1001.5}</p>
+      <p>{`Elevation: ${elevation()}`}</p>
     </div>
   )
 }
